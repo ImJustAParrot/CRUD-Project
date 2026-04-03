@@ -25,7 +25,7 @@ const Navbar = () => {
         closeMenu();
     };
 
-    const buttonText = isInUsersForm ? "Client List" : "Add Client";
+    const buttonText = isInUsersForm ? "Client List" : "+ Add Client";
 
     return (
         <nav className="navbar">

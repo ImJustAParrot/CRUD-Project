@@ -10,11 +10,39 @@ export const UsersList = ({ users, deleteUser, toggleUserStatus }) => {
 
     const [userToDelete, setUserToDelete] = useState(null);
 
+    const totalClients = users.length;
+    const activeClients = users.filter(user => user.status === "active").length;
+    const inactiveClients = users.filter(user => user.status === "inactive").length;
+
     return (
         <div>
             <h1 className="users-title user-list">
                 CLIENTS LIST
             </h1>
+
+            <div className="stats-container">
+                <div className="stat-card total">
+                    <div className="stat-icon">👥</div>
+                    <div className="stat-content">
+                        <div className="stat-value">{totalClients}</div>
+                        <div className="stat-label">Total Clients</div>
+                    </div>
+                </div>
+                <div className="stat-card active">
+                    <div className="stat-icon">✅</div>
+                    <div className="stat-content">
+                        <div className="stat-value">{activeClients}</div>
+                        <div className="stat-label">Active Clients</div>
+                    </div>
+                </div>
+                <div className="stat-card inactive">
+                    <div className="stat-icon">⛔</div>
+                    <div className="stat-content">
+                        <div className="stat-value">{inactiveClients}</div>
+                        <div className="stat-label">Inactive Clients</div>
+                    </div>
+                </div>
+            </div>
 
             <div className="search-container">
                 <input
