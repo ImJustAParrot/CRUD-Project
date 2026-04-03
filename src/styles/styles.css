@@ -271,11 +271,20 @@ nav {
     }
 }
 
-.search-container {
-    max-width: 500px;
+.search-wrapper {
+    max-width: 700px;
     margin: 1rem auto 2rem auto;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.search-container {
+    flex: 2;
+    min-width: 250px;
     position: relative;
-    z-index: 1;
 }
 
 .search-input {
@@ -312,6 +321,61 @@ nav {
 .clear-search:hover {
     color: #333;
     background: #f0f0f0;
+}
+
+.results-counter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+    padding: 0.5rem 1.2rem;
+    border-radius: 40px;
+    box-shadow: 0 2px 10px rgba(71, 108, 214, 0.15);
+    border: 1px solid rgba(71, 108, 214, 0.2);
+    transition: all 0.3s ease;
+}
+
+.results-counter:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(71, 108, 214, 0.25);
+}
+
+.counter-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #476CD6, #16213e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1;
+}
+
+.counter-text {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.counter-filter-badge {
+    background: linear-gradient(135deg, #476CD6, #16213e);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-left: 0.3rem;
+    animation: fadeInBadge 0.3s ease;
+}
+
+@keyframes fadeInBadge {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .users-head,
@@ -760,8 +824,24 @@ form button:active {
         justify-content: flex-start;
     }
     
-    .search-container {
+    .search-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.8rem;
         margin: 1rem;
+    }
+    
+    .search-container {
+        width: 100%;
+    }
+    
+    .results-counter {
+        justify-content: center;
+        padding: 0.4rem 1rem;
+    }
+    
+    .counter-number {
+        font-size: 1.5rem;
     }
     
     .feedback-message {
@@ -819,6 +899,18 @@ form button:active {
     }
     
     .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .results-counter {
+        padding: 0.3rem 0.8rem;
+    }
+    
+    .counter-number {
+        font-size: 1.3rem;
+    }
+    
+    .counter-text {
         font-size: 0.8rem;
     }
     

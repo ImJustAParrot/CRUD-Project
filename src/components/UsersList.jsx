@@ -1,3 +1,4 @@
+// components/UsersList.jsx
 import { UsersItem } from "./UsersItem";
 import { useState } from "react";
 
@@ -5,7 +6,10 @@ export const UsersList = ({ users, deleteUser, toggleUserStatus }) => {
     const [searchTerm, setSearchTerm] = useState("");
 
     const filteredUsers = users.filter(user =>
-        user.name.toLowerCase().includes(searchTerm.toLowerCase())
+        user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.phone.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.status.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const [userToDelete, setUserToDelete] = useState(null);
@@ -44,19 +48,32 @@ export const UsersList = ({ users, deleteUser, toggleUserStatus }) => {
                 </div>
             </div>
 
-            <div className="search-container">
-                <input
-                    type="text"
-                    placeholder="Search clients by name..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="search-input"
-                />
-                {searchTerm && (
-                    <button className="clear-search" onClick={() => setSearchTerm("")}>
-                        ✕
-                    </button>
-                )}
+            <div className="search-wrapper">
+                <div className="search-container">
+                    <input
+                        type="text"
+                        placeholder="Search by name, email, phone or status..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="search-input"
+                    />
+                    {searchTerm && (
+                        <button className="clear-search" onClick={() => setSearchTerm("")}>
+                            ✕
+                        </button>
+                    )}
+                </div>
+                <div className="results-counter">
+                    <span className="counter-number">{filteredUsers.length}</span>
+                    <span className="counter-text">
+                        {filteredUsers.length === 1 ? "result" : "results"}
+                    </span>
+                    {searchTerm && (
+                        <span className="counter-filter-badge">
+                            🔍 filtered
+                        </span>
+                    )}
+                </div>
             </div>
 
             <div className="users-head">
