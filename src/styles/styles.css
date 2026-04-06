@@ -856,6 +856,19 @@ form button:active {
         padding: 12px 20px;
     }
 
+    .user-action-buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .user-action-buttons button {
+        flex: 1;
+        text-align: center;
+        padding: 10px 5px;
+    }
+
     .stats-container {
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -937,6 +950,7 @@ form button:active {
     }
     
     .status-bar {
+        margin-top: 15px;
         width: 100%;
     }
     
